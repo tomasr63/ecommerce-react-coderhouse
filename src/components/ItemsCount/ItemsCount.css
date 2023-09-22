@@ -1,0 +1,41 @@
+.btns-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.mas-menos {
+    display: flex;
+    align-items: center;
+    /* gap: .5rem; */
+}
+
+
+.btn-count {
+    width: 30px;
+    height: 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.count-number {
+    padding: 1rem;
+    color: var(--text-100);
+    font-size: 1rem;
+    margin: 0;
+    position: relative;
+    text-align: center;
+}
+
+.count-number::after {
+    content: " cantidad: ";
+    position: absolute;
+    top: -20px;
+    right: 25px;
+    background-color: var(--primary-100);
+    color: var(--text-100);
+    padding: 3px;
+    border-radius: 7px 7px 0 7px;
+    box-shadow: 0 0 5px var(--accent-200);
+}

@@ -1,0 +1,13 @@
+.item {
+    background-color: var(--bg-300);
+}
+
+.img-container {
+    width: 18rem;
+    height: 18rem;
+}
+
+.card-title, .card-text {
+    color: var(--text-200);
+}
+
