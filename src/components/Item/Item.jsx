@@ -3,7 +3,7 @@ import './Item.css';
 
 export const Item = ({ item }) => {
     return (
-        <div className='py-3'>
+        <div className='p-2'>
 
             <div className="card mx-auto item" style={{ width: "18rem", height: "100%" }}>
                 <div className="img-container">

@@ -4,7 +4,7 @@ export const pedirDatos = () => {
     return new Promise((res, rej) => {
         setTimeout(() => {
             res(products);
-        }, 2000);
+        }, 700);
     });
 }
 
@@ -15,7 +15,7 @@ export const pedirXId = (id) => {
         if (producto) {
             setTimeout(() => {
                 res(producto);
-            }, 3000);
+            }, 700);
         } else {
             rej({
                 Error: "no se encontraron resultados"

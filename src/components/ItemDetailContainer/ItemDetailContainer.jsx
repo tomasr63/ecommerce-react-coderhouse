@@ -15,10 +15,12 @@ export const ItemDetailContainer = () => {
             .then((res) => {
                 setItem(res);
             })
-            .finally(setLoading(false));
+            .finally(() => setLoading(false));
     }, [id]);
 
-    if (loading) return <h1 className='text-center'>Loading...</h1>
+    if(loading) {
+        return <h1 className='text-center text-white'>Loading...</h1>
+    }
 
     return (
         <div>

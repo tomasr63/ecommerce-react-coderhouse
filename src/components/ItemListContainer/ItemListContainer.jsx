@@ -14,15 +14,15 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         setLoading(true);
-
         asyncFunction(category)
             .then((res) => setProductos(res))
-            .finally(setLoading(false));
-
+            .finally(() => setLoading(false));
     }, [category])
 
-    if (loading) return <h1 className='text-center'>Loading...</h1>
-
+    if(loading) {
+        return <h1 className='text-center text-white'>Loading...</h1>
+    } 
+        
     return (
         <div className='item-list-container container text-center'>
             <ItemList items={productos} />

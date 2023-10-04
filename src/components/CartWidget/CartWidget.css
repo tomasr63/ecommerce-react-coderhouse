@@ -1,0 +1,26 @@
+.cart-container {
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+}
+
+.cart-icon {
+    color: white;
+    font-size: 2rem;
+}
+
+.cart-num {
+    background-color: red;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 255, 255);
+    width: 1.5rem;
+    height: 1.5rem;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: -10px;
+    right: -20px;
+}

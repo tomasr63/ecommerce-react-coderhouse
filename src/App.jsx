@@ -4,26 +4,27 @@ import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetail
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 import { NavBar } from './components/NavBar/NavBar';
 import { Home } from './pages/Home/Home';
-import { CartContext } from './context/CartContext';
+import { CartProvider } from './context/CartContext';
+import { Cart } from './components/Cart/Cart';
+import { Checkout } from './pages/Checkout/Checkout';
 
 function App() {
-
-  const user = "tomi"
-
   return (
     <div className="App">
-      <CartContext.Provider value={user} >
-        <BrowserRouter >
+      <CartProvider>
+        <BrowserRouter>
           <NavBar />
-          <Routes >
+          <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='/items' element={<ItemListContainer />}></Route>
             <Route path='/items/category/:category' element={<ItemListContainer />}></Route>
             <Route path='/item/id/:id' element={<ItemDetailContainer />}></Route>
-            <Route path='*' element={<h1>Error 404</h1>} ></Route>
+            <Route path='/cart' element={<Cart />}></Route>
+            <Route path='/checkout' element={<Checkout />}></Route>
+            <Route path='*' element={<h1 className='text-danger'>Error 404</h1>} ></Route>
           </Routes>
         </BrowserRouter>
-      </CartContext.Provider >
+      </CartProvider>
     </div>
   );
 }
