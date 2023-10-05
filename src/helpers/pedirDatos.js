@@ -1,40 +1,33 @@
-import products from '../data/productos.json';
+import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
-export const pedirDatos = () => {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res(products);
-        }, 700);
-    });
+
+export const pedirDatos = async () => {
+    const prodsRef = collection(db, 'productos');
+
+    return getDocs(prodsRef)
+        .then((snapshots) => {
+            return snapshots.docs.map((doc) => {
+                return { id: doc.id, ...doc.data() }
+            });
+        })
 }
 
 export const pedirXId = (id) => {
-    return new Promise((res, rej) => {
-        const producto = products.find(prod => prod.id === Number(id));
-
-        if (producto) {
-            setTimeout(() => {
-                res(producto);
-            }, 700);
-        } else {
-            rej({
-                Error: "no se encontraron resultados"
-            })
-        }
-    });
+    const prodId = doc(db, 'productos', id);
+    return getDoc(prodId)
+        .then((snapshot) => {
+            return { id: snapshot.id, ...snapshot.data() }
+        });
 }
 
 export const pedirXCategoria = (category) => {
-    return new Promise((res, rej) => {
-        const productos = products.filter((prod) => prod.category === category);
-        if (productos) {
-            setTimeout(() => {
-                res(productos);
-            }, 1000)
-        } else {
-            rej({
-                Error: "no se encontraron resultados"
-            })
-        }
-    })
+    const prodXCatRef = query(collection(db, 'productos'), where('category', '==', category));
+
+    return getDocs(prodXCatRef)
+        .then((snapshots) => {
+            return snapshots.docs.map((doc) => {
+                return { id: doc.id, ...doc.data() }
+            } );
+        })
 }

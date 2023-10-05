@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import './ItemListContainer.css';
+import { useParams } from 'react-router-dom';
 import { pedirDatos, pedirXCategoria } from '../../helpers/pedirDatos';
 import { ItemList } from '../ItemList/ItemList';
-import { useParams } from 'react-router-dom';
+import './ItemListContainer.css';
 
 export const ItemListContainer = () => {
 
-    const [productos, setProductos] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const { category } = useParams();
 
@@ -15,9 +15,12 @@ export const ItemListContainer = () => {
     useEffect(() => {
         setLoading(true);
         asyncFunction(category)
-            .then((res) => setProductos(res))
+            .then(res => {
+                setProducts(res)
+            })
+            .catch((err) => console.error(err))
             .finally(() => setLoading(false));
-    }, [category])
+    }, [category]);
 
     if(loading) {
         return <h1 className='text-center text-white'>Loading...</h1>
@@ -25,7 +28,7 @@ export const ItemListContainer = () => {
         
     return (
         <div className='item-list-container container text-center'>
-            <ItemList items={productos} />
+            <ItemList items={products} />
         </div>
     )
 }
