@@ -52,7 +52,7 @@ export const Checkout = () => {
           <input type="email" required placeholder="E-mail" {...register("email")} />
           <input type="phone" required placeholder="Telefono" {...register("telefono")} />
 
-          <button type="submit" className="btn btn-success">Buy</button>
+          <button type="submit" className="btn btn-success">Buy for ${totalPrice()}</button>
 
         </form>
 

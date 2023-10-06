@@ -27,7 +27,7 @@ export const CartProvider = ( { children } ) => {
     }
 
     const totalPrice = () => {
-        return cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
+        return cart.reduce((acc, item) => acc + item.quantity * item.price, 0).toFixed(2);
     }
 
     const removeToCart = (itemID) => {

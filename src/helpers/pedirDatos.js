@@ -13,7 +13,7 @@ export const pedirDatos = async () => {
         })
 }
 
-export const pedirXId = (id) => {
+export const pedirXId = async (id) => {
     const prodId = doc(db, 'productos', id);
     return getDoc(prodId)
         .then((snapshot) => {
